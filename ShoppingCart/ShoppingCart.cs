@@ -22,8 +22,5 @@ namespace ShoppingCart.ShoppingCart
 
         public void RemoveItems(int[] productCatalogueIds) =>
             this.items.RemoveWhere(i => productCatalogueIds.Contains(i.ProductCatalogueId));
-
     }
-
-    public record Money(string Currency, decimal Amount);
 }
