@@ -13,11 +13,6 @@ namespace ShoppingCart
         {
             services.AddControllers();
             services.AddScoped<IShoppingCartStore, ShoppingCartStore>();
-            // services.Scan(selector =>
-            //     selector
-            //         .FromAssemblyOf<Startup>()
-            //         .AddClasses()
-            //         .AsImplementedInterfaces());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
