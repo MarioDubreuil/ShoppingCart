@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ShoppingCart;
 
 namespace ShoppingCart.ShoppingCart
 {
