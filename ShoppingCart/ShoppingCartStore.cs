@@ -2,12 +2,6 @@ using System.Collections.Generic;
 
 namespace ShoppingCart.ShoppingCart
 {
-    public interface IShoppingCartStore
-    {
-        ShoppingCart Get(int userId);
-        void Save(ShoppingCart shoppingCart);
-    }
-
     public class ShoppingCartStore : IShoppingCartStore
     {
         private static readonly Dictionary<int, ShoppingCart> Database = new Dictionary<int, ShoppingCart>();
