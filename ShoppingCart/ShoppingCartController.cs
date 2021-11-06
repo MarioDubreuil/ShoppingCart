@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +23,19 @@ namespace ShoppingCart.ShoppingCart
             int userId,
             [FromBody] int[] productIds)
         {
-            var shoppingCart = shoppingCartStore.Get(userId);
-            shoppingCartStore.Save(shoppingCart);
-            return shoppingCart;
+            var cart = shoppingCartStore.Get(userId);
+            var items = new HashSet<ShoppingCartItem>();
+            if (productIds != null)
+            {
+                foreach (var productId in productIds)
+                {
+                    var item = new ShoppingCartItem(productId, "", "", new Money("", 0));
+                    items.Add(item);
+                }
+                cart.AddItems(items);
+            }
+            shoppingCartStore.Save(cart);
+            return cart;
         }
     }
 }
