@@ -24,16 +24,7 @@ namespace ShoppingCart.ShoppingCart
             [FromBody] int[] productIds)
         {
             var cart = shoppingCartStore.Get(userId);
-            var items = new HashSet<ShoppingCartItem>();
-            if (productIds != null)
-            {
-                foreach (var productId in productIds)
-                {
-                    var item = new ShoppingCartItem(productId, "", "", new Money("", 0));
-                    items.Add(item);
-                }
-                cart.AddItems(items);
-            }
+            cart.AddItems(productIds);
             shoppingCartStore.Save(cart);
             return cart;
         }
