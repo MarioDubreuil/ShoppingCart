@@ -37,5 +37,16 @@ namespace ShoppingCart.ShoppingCart
             shoppingCartStore.Save(cart);
             return cart;
         }
+
+        [HttpDelete("{userId:int}/items")]
+        public ShoppingCart Delete(
+            int userId,
+            [FromBody] int[] productIds)
+        {
+            var cart = this.shoppingCartStore.Get(userId);
+            cart.RemoveItems(productIds);
+            this.shoppingCartStore.Save(cart);
+            return cart;
+        }
     }
 }
