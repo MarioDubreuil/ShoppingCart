@@ -1,0 +1,35 @@
+[
+  {
+    "productId": 1,
+    "productName": "Basic t-shirt",
+    "productDescription": "a quiet t-shirt",
+    "price": { "amount" : 40, "currency": "eur" },
+    "attributes" : [
+    { 
+      "sizes": [ "s", "m", "l"],
+      "colors": ["red", "blue", "green"]
+    }]
+  },
+  {
+    "productId": 2,
+    "productName": "Fancy shirt",
+    "productDescription": "a loud t-shirt",
+    "price": { "amount" : 50, "currency": "eur" },
+    "attributes" : [
+    { 
+      "sizes": [ "s", "m", "l", "xl"],
+      "colors": ["ALL", "Batique"]
+    }]
+  },
+  {
+    "productId": 3,
+    "productName": "Hoodie",
+    "productDescription": "awsine hoodie",
+    "price": { "amount" : 65, "currency": "eur" },
+    "attributes" : [
+    { 
+      "sizes": [ "m", "l"],
+      "colors": ["white", "black"]
+    }]
+  }
+]

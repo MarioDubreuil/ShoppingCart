@@ -10,7 +10,7 @@ namespace ShoppingCart
     public class ProductCatalogClient : IProductCatalogClient
     {
         private readonly HttpClient client;
-        private static string productCatalogBaseUrl = @"https://git.io/JeHiE";
+        private static string productCatalogBaseUrl = @"https://gist.githubusercontent.com/MarioDubreuil/70f1b06769396f31cc0a1237d4ee9c7a/raw/4f501b9cb5cb036695b33ac93a5bd2998e11d57f/mock-product-catalog-response.json";
         private static string getProductPathTemplate = "?productIds=[{0}]";
         public ProductCatalogClient(HttpClient client)
         {
