@@ -13,6 +13,7 @@ namespace ShoppingCart
         {
             services.AddControllers();
             services.AddScoped<IShoppingCartStore, ShoppingCartStore>();
+            services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
