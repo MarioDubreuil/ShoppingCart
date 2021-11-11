@@ -1,4 +1,7 @@
-use ProductCatalogClient
 create my own gist
 normalize catalog vs catalogue
 upgrade to dotnet 6
+replace namespace with using
+pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui n'existe pas
+pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui est deja dans le panier
+pourquoi il n'y a pas d'erreur lorsqu'on supprimer un productid qui n'existe pas

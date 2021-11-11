@@ -19,17 +19,6 @@ namespace ShoppingCart.ShoppingCart
                 this.items.Add(item);
             }
         }
-        public void AddItems(int[] productCatalogueIds)
-        {
-            if (productCatalogueIds != null)
-            {
-                foreach (var productCatalogueId in productCatalogueIds)
-                {
-                    var item = new ShoppingCartItem(productCatalogueId, "", "", new Money("", 0));
-                    this.items.Add(item);
-                }
-            }
-        }
 
         public void RemoveItems(int[] productCatalogueIds) =>
             this.items.RemoveWhere(i => productCatalogueIds.Contains(i.ProductCatalogueId));

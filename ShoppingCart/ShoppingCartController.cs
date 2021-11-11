@@ -8,10 +8,12 @@ namespace ShoppingCart.ShoppingCart
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartStore shoppingCartStore;
+        private readonly IProductCatalogClient productCatalogClient;
 
-        public ShoppingCartController(IShoppingCartStore shoppingCartStore)
+        public ShoppingCartController(IShoppingCartStore shoppingCartStore, IProductCatalogClient productCatalogClient)
         {
             this.shoppingCartStore = shoppingCartStore;
+            this.productCatalogClient = productCatalogClient;
         }
 
         [HttpGet("{userId:int}")]
@@ -19,12 +21,13 @@ namespace ShoppingCart.ShoppingCart
             this.shoppingCartStore.Get(userId);
 
         [HttpPost("{userId:int}/items")]
-        public ShoppingCart Post(
+        public async Task<ShoppingCart> Post(
             int userId,
             [FromBody] int[] productIds)
         {
             var cart = shoppingCartStore.Get(userId);
-            cart.AddItems(productIds);
+            var items = await this.productCatalogClient.GetShoppingCartItems(productIds);
+            cart.AddItems(items);
             shoppingCartStore.Save(cart);
             return cart;
         }
