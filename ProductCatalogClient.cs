@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ShoppingCart.ShoppingCart;
@@ -14,8 +16,8 @@ namespace ShoppingCart
         private static string getProductPathTemplate = "?productIds=[{0}]";
         public ProductCatalogClient(HttpClient client)
         {
-            client.BaseAddress = new System.Uri(productCatalogBaseUrl);
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.BaseAddress = new Uri(productCatalogBaseUrl);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             this.client = client;
         }
         public async Task<IEnumerable<ShoppingCartItem>> GetShoppingCartItems(int[] productCatalogIds)
