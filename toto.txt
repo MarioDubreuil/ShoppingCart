@@ -1,0 +1,3 @@
+use ProductCatalogClient
+create my own gist
+normalize catalog vs catalogue
