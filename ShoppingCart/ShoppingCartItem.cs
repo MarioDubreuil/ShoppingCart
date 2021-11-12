@@ -1,15 +1,15 @@
 namespace ShoppingCart.ShoppingCart
 {
     public record ShoppingCartItem(
-        int ProductCatalogueId,
+        int ProductCatalogId,
         string ProductName,
         string Description,
         Money Price)
     {
         public virtual bool Equals(ShoppingCartItem? obj) =>
-            obj != null && this.ProductCatalogueId.Equals(obj.ProductCatalogueId);
+            obj != null && this.ProductCatalogId.Equals(obj.ProductCatalogId);
 
         public override int GetHashCode() =>
-            this.ProductCatalogueId.GetHashCode();
+            this.ProductCatalogId.GetHashCode();
     }
 }

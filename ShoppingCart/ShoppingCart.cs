@@ -20,7 +20,7 @@ namespace ShoppingCart.ShoppingCart
             }
         }
 
-        public void RemoveItems(int[] productCatalogueIds) =>
-            this.items.RemoveWhere(i => productCatalogueIds.Contains(i.ProductCatalogueId));
+        public void RemoveItems(int[] productCatalogIds) =>
+            this.items.RemoveWhere(i => productCatalogIds.Contains(i.ProductCatalogId));
     }
 }
