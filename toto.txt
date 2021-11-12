@@ -1,4 +1,4 @@
 upgrade to dotnet 6
-pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui n'existe pas
-pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui est deja dans le panier
-pourquoi il n'y a pas d'erreur lorsqu'on supprimer un productid qui n'existe pas
+pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui n'existe pas: parce que le call est mocké et qu'il retourne toujours les mêmes 3 produits
+pourquoi il n'y a pas d'erreur lorsqu'on ajoute un productid qui est deja dans le panier: ShoppingCart.cs - this.items.Add(item) - HashSet<ShoppingCartItem> items - shoppingCartItems item
+pourquoi il n'y a pas d'erreur lorsqu'on supprimer un productid qui n'existe pas: ShoppingCart.cs - this.items.RemoveWhere(i => productCatalogIds.Contains(i.ProductCatalogId)) - HashSet<ShoppingCartItem> items - int[] productCatalogIds
