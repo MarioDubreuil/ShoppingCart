@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using ShoppingCart.EventFeed;
 using ShoppingCart.ShoppingCart;
 
 namespace ShoppingCart
@@ -14,6 +15,7 @@ namespace ShoppingCart
             services.AddControllers();
             services.AddScoped<IShoppingCartStore, ShoppingCartStore>();
             services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>();
+            services.AddScoped<IEventStore, EventStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

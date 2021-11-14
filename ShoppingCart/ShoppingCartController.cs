@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingCart.EventFeed;
 
 namespace ShoppingCart.ShoppingCart
 {
@@ -9,11 +10,13 @@ namespace ShoppingCart.ShoppingCart
     {
         private readonly IShoppingCartStore shoppingCartStore;
         private readonly IProductCatalogClient productCatalogClient;
+        private readonly IEventStore eventStore;
 
-        public ShoppingCartController(IShoppingCartStore shoppingCartStore, IProductCatalogClient productCatalogClient)
+        public ShoppingCartController(IShoppingCartStore shoppingCartStore, IProductCatalogClient productCatalogClient, IEventStore eventStore)
         {
             this.shoppingCartStore = shoppingCartStore;
             this.productCatalogClient = productCatalogClient;
+            this.eventStore = eventStore;
         }
 
         [HttpGet("{userId:int}")]
@@ -27,7 +30,7 @@ namespace ShoppingCart.ShoppingCart
         {
             var cart = shoppingCartStore.Get(userId);
             var items = await this.productCatalogClient.GetShoppingCartItems(productIds);
-            cart.AddItems(items);
+            cart.AddItems(items, eventStore);
             shoppingCartStore.Save(cart);
             return cart;
         }

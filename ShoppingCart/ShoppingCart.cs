@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using ShoppingCart.EventFeed;
 
 namespace ShoppingCart.ShoppingCart
 {
@@ -12,11 +13,14 @@ namespace ShoppingCart.ShoppingCart
 
         public ShoppingCart(int userId) => this.UserId = userId;
 
-        public void AddItems(IEnumerable<ShoppingCartItem> shoppingCartItems)
+        public void AddItems(IEnumerable<ShoppingCartItem> shoppingCartItems, IEventStore eventStore)
         {
             foreach (var item in shoppingCartItems)
             {
-                this.items.Add(item);
+                if(this.items.Add(item))
+                {
+                    eventStore.Raise("ShoppingCartItemAdded", new { UserId, item });
+                }
             }
         }
 
