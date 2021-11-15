@@ -24,7 +24,16 @@ namespace ShoppingCart.ShoppingCart
             }
         }
 
-        public void RemoveItems(int[] productCatalogIds) =>
-            this.items.RemoveWhere(i => productCatalogIds.Contains(i.ProductCatalogId));
+        public void RemoveItems(int[] productCatalogIds, IEventStore eventStore)
+        {
+            foreach (var productCatalogId in productCatalogIds)
+            {
+                int numberOfElementsRemoved = this.items.RemoveWhere(i => i.ProductCatalogId == productCatalogId);
+                if (numberOfElementsRemoved > 0)
+                {
+                    eventStore.Raise("ShoppingCartItemRemoved", new {UserId, productCatalogId});
+                }
+            }
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace ShoppingCart.ShoppingCart
             [FromBody] int[] productIds)
         {
             var cart = this.shoppingCartStore.Get(userId);
-            cart.RemoveItems(productIds);
+            cart.RemoveItems(productIds, eventStore);
             this.shoppingCartStore.Save(cart);
             return cart;
         }

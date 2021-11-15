@@ -13,7 +13,7 @@ namespace ShoppingCart.EventFeed
         public void Raise(string eventName, object content)
         {
             // throw new System.NotImplementedException();
-            Console.WriteLine("Raise has been called");
+            Console.WriteLine($"An event has been raised: Event = {eventName} Object = {content}");
         }
     }
 }
