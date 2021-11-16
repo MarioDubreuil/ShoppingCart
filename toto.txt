@@ -1,1 +1,3 @@
+implement start, end in GetEvents
+put the whole product instead on only the product id in the ShoppingCartItemRemoved raise event
 upgrade to dotnet 6
