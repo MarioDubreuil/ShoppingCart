@@ -9,9 +9,9 @@ namespace ShoppingCart.EventFeed
         private static readonly List<Event> events = new();
         public IEnumerable<Event> GetEvents(long firstEventSequenceNumber, long lastEventSequenceNumber)
         {
-            return events;
-                    // .Where(e => e.SequenceNumber >= firstEventSequenceNumber && e.SequenceNumber <= lastEventSequenceNumber)
-                    // .OrderBy(e => e.SequenceNumber);
+            return events
+                    .Where(e => e.SequenceNumber >= firstEventSequenceNumber && e.SequenceNumber <= lastEventSequenceNumber)
+                    .OrderBy(e => e.SequenceNumber);
         }
 
         public void Raise(string eventName, object content)

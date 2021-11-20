@@ -12,7 +12,7 @@ namespace ShoppingCart.EventFeed
             this.eventStore = eventStore;
 
         [HttpGet("")]
-        public Event[] Get([FromQuery] long start, [FromQuery] long end = long.MaxValue) =>
+        public Event[] Get([FromQuery] long start = 1, [FromQuery] long end = long.MaxValue) =>
             this.eventStore
                 .GetEvents(start, end)
                 .ToArray();
