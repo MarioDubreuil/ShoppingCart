@@ -34,14 +34,6 @@ namespace ShoppingCart.ShoppingCart
                     eventStore.Raise("ShoppingCartItemRemoved", new { UserId, item });
                 }
             }
-            // foreach (var productCatalogId in productCatalogIds)
-            // {
-            //     int numberOfElementsRemoved = this.items.RemoveWhere(i => i.ProductCatalogId == productCatalogId);
-            //     if (numberOfElementsRemoved > 0)
-            //     {
-            //         eventStore.Raise("ShoppingCartItemRemoved", new {UserId, productCatalogId});
-            //     }
-            // }
         }
     }
 }
