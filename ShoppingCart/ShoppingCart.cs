@@ -26,14 +26,22 @@ namespace ShoppingCart.ShoppingCart
 
         public void RemoveItems(int[] productCatalogIds, IEventStore eventStore)
         {
-            foreach (var productCatalogId in productCatalogIds)
+            var items = this.items.Where(i => productCatalogIds.Contains(i.ProductCatalogId)).ToList();
+            foreach (var item in items)
             {
-                int numberOfElementsRemoved = this.items.RemoveWhere(i => i.ProductCatalogId == productCatalogId);
-                if (numberOfElementsRemoved > 0)
+                if(this.items.Remove(item))
                 {
-                    eventStore.Raise("ShoppingCartItemRemoved", new {UserId, productCatalogId});
+                    eventStore.Raise("ShoppingCartItemRemoved", new { UserId, item });
                 }
             }
+            // foreach (var productCatalogId in productCatalogIds)
+            // {
+            //     int numberOfElementsRemoved = this.items.RemoveWhere(i => i.ProductCatalogId == productCatalogId);
+            //     if (numberOfElementsRemoved > 0)
+            //     {
+            //         eventStore.Raise("ShoppingCartItemRemoved", new {UserId, productCatalogId});
+            //     }
+            // }
         }
     }
 }
