@@ -16,9 +16,7 @@ namespace ShoppingCart.EventFeed
 
         public void Raise(string eventName, object content)
         {
-            Console.WriteLine("An event has been raised");
             events.Add(new Event(events.Count + 1, DateTimeOffset.UtcNow, eventName, content));
-            Console.WriteLine(events.Last());
         }
     }
 }
